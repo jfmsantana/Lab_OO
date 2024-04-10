@@ -1,25 +1,44 @@
 package Ex2.Solucao.Solucao.Banco.src.main.java.banco;
-
+import java.util.Scanner;
+import Ex2.Solucao.Solucao.Banco.src.main.java.banco.Cliente;
 public class TesteBanco {
     public static void main(String[] args) {
-        Cliente cliente = new Cliente("Bruno", "Henrique");
-        System.out.println("Criando o cliente " + cliente);
+        Scanner scanner = new Scanner (System.in);
 
-        cliente.setConta(new Conta(50000));
-        System.out.println("Criando uma conta com saldo inicial de R$ " + cliente.getConta().getSaldo());
+        System.out.println("Nome do cliente: ");
+        String name = scanner.nextLine();
+        System.out.println("Sobrenome do cliente: ");
+        String lastName = scanner.nextLine();
+        Cliente cl1 = new Cliente(name, lastName);
+        System.out.println("Criando o cliente " + cl1.getName() +" " + cl1.getLastName());
 
+        System.out.println("\nInforme o saldo inicial da conta do cliente: ");
+        Double saldoInicial = scanner.nextDouble();
+        Conta c1 = new Conta(saldoInicial);
+        cl1.setConta(c1);
+        System.out.println("Criando uma conta com saldo inicial de R$ " + cl1.getConta().getSaldo());
 
-        System.out.println("Sacando R$1200,00: " + cliente.getConta().sacar(1200));
+        System.out.println("\nInforme o valor do saque: ");
+        Double saque1 = scanner.nextDouble();
+        cl1.getConta().sacar(saque1);
+        System.out.println("Saque realizado com sucesso ! O saldo da conta agora é de R$" + cl1.getConta().getSaldo());
 
-        System.out.println("Depositando R$8.525,00: " + cliente.getConta().depositar(8525));
+        System.out.println("\nInforme o valor do depósito: ");
+        Double dep1 = scanner.nextDouble();
+        cl1.getConta().depositar(dep1);
+        System.out.println("Depósito realizado com sucesso ! O novo saldo da conta é de R$" + cl1.getConta().getSaldo());
 
-        System.out.println("Sacando R$12.800,00: " + cliente.getConta().sacar(12800));
+        System.out.println("\nInforme o valor do novo saque: ");
+        Double saque2 = scanner.nextDouble();
+        cl1.getConta().sacar(saque2);
+        System.out.println("Saque realizado com sucesso ! O saldo da conta agora é de R$" + cl1.getConta().getSaldo());
 
-        System.out.println("Sacando R$50.000,00: " + cliente.getConta().sacar(50000));
+        System.out.println("\nInforme o valor do novo depósito: ");
+        Double dep2 = scanner.nextDouble();
+        cl1.getConta().depositar(dep2);
+        System.out.println("Depósito realizado com sucesso ! O novo saldo da conta é de R$" + cl1.getConta().getSaldo());
 
-
-        System.out.println("O saldo da conta é R$ " + cliente.getConta().getSaldo());
-
+        System.out.println("\n\nAo final das operações realizadas, o saldo da conta é de R$" + cl1.getConta().getSaldo());
 
     }
 }
